@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		sh 'docker build -t web .'
+		script {
+			sh 'docker build -t web .'
+		}
             }
         }
         stage('Test') {
