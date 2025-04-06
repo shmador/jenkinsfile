@@ -15,6 +15,7 @@ pipeline {
 		snykSecurity(
 			snykInstallation: 'snyk@latest',
 			snykTokenId: 'snyk-token',
+			additionalArguments: '--docker web'
 		)
             }
         }
