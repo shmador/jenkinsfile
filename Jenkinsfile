@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-	SNYK_TOKEN = cardentials('snyk-token')
+	SNYK_TOKEN = credentials('snyk-token')
     }
 	
     stages {
@@ -15,7 +15,6 @@ pipeline {
 
         stage('Test') {
             steps {
-            	echo 'test'
 		snykSecurity {
 			snykInstallation: 'snyk@latest'
 			snykTokenId: SNYK_TOKEN 
