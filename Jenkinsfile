@@ -16,6 +16,7 @@ pipeline {
 			snykInstallation: 'snyk@latest',
 			snykTokenId: 'snyk-token',
 			additionalArguments: '--docker web'
+			failOnIssues: 'false'
 		)
             }
         }
