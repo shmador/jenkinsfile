@@ -9,9 +9,16 @@ pipeline {
 		}
             }
         }
+	environment {
+		SNYK_TOKEN = cardentials('snyk-token')
+	}
         stage('Test') {
             steps {
-            	echo 'test'    
+            	echo 'test'
+		snykSecurity {
+			snykInstallation: 'snyk@latest'
+			snykTokenId: SNYK_TOKEN 
+		}  
             }
         }
         stage('Deploy') {
