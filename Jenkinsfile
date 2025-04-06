@@ -12,9 +12,10 @@ pipeline {
 
         stage('Test') {
             steps {
-             withCredentials([string(credentialsId: 'snyktoken', variable: 'TOKEN')]) {
-                    sh 'snyk test'
-                }
+		snykSecurity(
+			snykInstallation: 'snyk@latest',
+			snykTokenId: 'snyk-token',
+		)
             }
         }
         stage('Deploy') {
