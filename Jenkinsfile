@@ -4,13 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		image 'gradle:8.2.0-jdk17-alpine'
-		reuseNode true
+		sh 'docker build -t web .'
             }
         }
         stage('Test') {
             steps {
-                sh 'gradle --version'
+                
             }
         }
         stage('Deploy') {
