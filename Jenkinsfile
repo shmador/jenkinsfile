@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    environment {
+	SNYK_TOKEN = cardentials('snyk-token')
+    }
+	
     stages {
         stage('Build') {
             steps {
@@ -9,9 +12,7 @@ pipeline {
 		}
             }
         }
-	environment {
-		SNYK_TOKEN = cardentials('snyk-token')
-	}
+
         stage('Test') {
             steps {
             	echo 'test'
