@@ -13,7 +13,6 @@ pipeline {
         stage('Test') {
             steps {
              withCredentials([string(credentialsId: 'snyktoken', variable: 'TOKEN')]) {
-			snykInstallation: snyk@latest
                     sh 'snyk test'
                 }
             }
