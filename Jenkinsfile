@@ -15,10 +15,9 @@ pipeline {
 
         stage('Test') {
             steps {
-		snykSecurity {
-			snykInstallation: 'snyk@latest'
-			snykTokenId: SNYK_TOKEN 
-		}  
+             withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
+                    sh 'snyk test --all-projects'
+                }
             }
         }
         stage('Deploy') {
